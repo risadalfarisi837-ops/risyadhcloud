@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>RISYADH - FILE TO LINK PRO</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;800&family=Space+Grotesk:wght@300;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- VARIABLES & PALETTE (TETAP PAKAI THEME KAMU) --- */
+        :root {
+            --bg-color: #e0e0e0;
+            --main-black: #0a0a0a;
+            --card-bg: #ffffff;
+            --accent-primary: #6a0dad;  
+            --accent-secondary: #ccff00; 
+            --accent-tertiary: #ff5f00;  
+            --accent-gold: #ffd700;      
+            --accent-danger: #ff003c;
+            --border-width: 3px;
+            --font-head: 'Space Grotesk', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+        body { font-family: var(--font-head); background-color: var(--bg-color); color: var(--main-black); min-height: 100vh; overflow-x: hidden; padding-bottom: 50px; background-image: linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px); background-size: 20px 20px; }
+        
+        .floating-shape { position: fixed; z-index: -2; border: 2px solid var(--main-black); background: var(--accent-secondary); opacity: 0.6; }
+        .shape-1 { width: 100px; height: 100px; top: 10%; left: -20px; border-radius: 50%; }
+        .shape-2 { width: 150px; height: 150px; bottom: 20%; right: -40px; transform: rotate(45deg); background: var(--accent-primary); }
+
+        .marquee-top { background: var(--main-black); color: var(--accent-gold); padding: 10px 0; font-family: var(--font-mono); font-size: 0.8rem; font-weight: bold; border-bottom: var(--border-width) solid var(--accent-secondary); overflow: hidden; white-space: nowrap; }
+        .marquee-content { display: inline-block; animation: scrollLeft 15s linear infinite; }
+        @keyframes scrollLeft { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+        .navbar { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem; background: rgba(255,255,255,0.9); border-bottom: var(--border-width) solid var(--main-black); position: sticky; top: 0; z-index: 100; }
+        .brand-glitch { font-weight: 900; font-size: 1.5rem; letter-spacing: -1px; text-transform: uppercase; }
+
+        .container { max-width: 550px; margin: 30px auto; padding: 0 20px; display: flex; flex-direction: column; gap: 30px; }
+        .cyber-card { background: var(--card-bg); border: var(--border-width) solid var(--main-black); box-shadow: 8px 8px 0 var(--main-black); position: relative; overflow: hidden; }
+        
+        .card-header-visual { background: var(--accent-primary); padding: 30px 20px 20px 20px; border-bottom: var(--border-width) solid var(--main-black); display: flex; justify-content: space-between; align-items: center; }
+        .profile-section { display: flex; align-items: center; gap: 15px; }
+        .avatar-img { width: 60px; height: 60px; border: 3px solid var(--main-black); background: #fff; border-radius: 12px; box-shadow: 4px 4px 0 var(--accent-secondary); object-fit: cover; }
+        .user-action { font-weight: 900; color: #fff; font-size: 1.1rem; text-transform: uppercase; }
+
+        .upload-area { border: 3px dashed var(--main-black); background: #f4f4f4; padding: 50px 20px; text-align: center; cursor: pointer; transition: 0.2s; }
+        .upload-area:hover { background: var(--accent-secondary); }
+
+        /* CSS KHUSUS RESULT LINK */
+        .result-box { display: none; flex-direction: column; gap: 15px; padding: 10px; }
+        .link-display { background: var(--main-black); color: var(--accent-secondary); padding: 15px; font-family: var(--font-mono); font-size: 0.9rem; border: 2px solid var(--accent-primary); word-break: break-all; text-align: center; }
+        
+        .cyber-button { width: 100%; padding: 18px; border: 3px solid var(--main-black); background: var(--accent-secondary); color: var(--main-black); font-family: var(--font-head); font-weight: 900; text-transform: uppercase; cursor: pointer; box-shadow: 5px 5px 0 var(--main-black); margin-bottom: 10px; }
+        .cyber-button:active { transform: translate(3px, 3px); box-shadow: 2px 2px 0 var(--main-black); }
+        
+        .scanner { width: 100%; height: 4px; background: var(--accent-primary); animation: scan 2s infinite ease-in-out; margin-bottom: 15px; }
+        @keyframes scan { 0% { width: 0; } 50% { width: 100%; } 100% { width: 0; margin-left: auto; } }
+        
+        .hidden { display: none !important; }
+        .risyadh-footer { text-align: center; margin-top: 40px; font-family: var(--font-mono); }
+        .risyadh-highlight { background: var(--main-black); color: var(--accent-secondary); padding: 2px 6px; }
+    </style>
+</head>
+<body>
+    <div class="floating-shape shape-1"></div>
+    <div class="floating-shape shape-2"></div>
+    <div class="marquee-top">
+        <div class="marquee-content">
+            STATUS: SYSTEM ONLINE • CLOUD STORAGE ACTIVE • PERMANENT LINKS • NO EXPIRY • RISYADH HOSTING •
+        </div>
+    </div>
+    
+    <nav class="navbar"><div class="brand-glitch">RISYADH</div></nav>
+
+    <div class="container">
+        <div class="cyber-card">
+            <div class="card-header-visual">
+                <div class="profile-section">
+                    <img src="https://files.catbox.moe/1yu7kn.jpg" class="avatar-img">
+                    <div class="profile-info" style="color: #fff;">
+                        <div style="font-size: 0.7rem; color: var(--accent-secondary);">RISYADH HOSTING</div>
+                        <div class="user-action">UBAH FILE JADI LINK</div>
+                    </div>
+                </div>
+                <div style="color: #fff; font-weight: 900;">///</div>
+            </div>
+            
+            <div class="card-body" style="padding: 25px;">
+                <div id="uploadView">
+                    <div class="upload-area" onclick="document.getElementById('fileInput').click()">
+                        <div style="font-size: 40px; margin-bottom: 10px;">☁️</div>
+                        <div style="font-weight: 800; font-size: 1.1rem;">TAP UNTUK UPLOAD</div>
+                        <div style="font-size: 0.8rem; opacity: 0.7;">Foto atau Video (Max 200MB)</div>
+                    </div>
+                    <input type="file" id="fileInput" class="hidden">
+                </div>
+
+                <div id="loadingView" class="hidden" style="text-align: center; padding: 20px;">
+                    <div class="scanner"></div>
+                    <p style="font-family: var(--font-mono); font-weight: bold;">UPLOADING TO CLOUD...</p>
+                </div>
+
+                <div id="resultView" class="result-box">
+                    <div style="font-family: var(--font-mono); font-size: 0.8rem; font-weight: bold; text-align: center;">> FILE BERHASIL DIHOSTING <</div>
+                    <div id="linkDisplay" class="link-display">https://files.catbox.moe/xxxx.jpg</div>
+                    
+                    <button class="cyber-button" onclick="copyLink()">SALIN LINK</button>
+                    <button class="cyber-button" style="background: var(--accent-primary); color:#fff;" onclick="resetApp()">UPLOAD LAGI</button>
+                </div>
+            </div>
+        </div>
+
+        <footer class="risyadh-footer">
+            <p>POWERED BY <span class="risyadh-highlight">RISYADH</span></p>
+        </footer>
+    </div>
+
+    <script>
+        const fileInput = document.getElementById('fileInput');
+        const uploadView = document.getElementById('uploadView');
+        const loadingView = document.getElementById('loadingView');
+        const resultView = document.getElementById('resultView');
+        const linkDisplay = document.getElementById('linkDisplay');
+
+        // Saat user pilih file
+        fileInput.addEventListener('change', function() {
+            if (this.files && this.files[0]) {
+                startUpload(this.files[0]);
+            }
+        });
+
+        // FUNGSI UTAMA: Upload ke Catbox.moe
+        async function startUpload(file) {
+            uploadView.classList.add('hidden');
+            loadingView.classList.remove('hidden');
+
+            const formData = new FormData();
+            formData.append('reqtype', 'fileupload');
+            formData.append('fileToUpload', file);
+
+            try {
+                // Proses upload ke API Catbox
+                const response = await fetch('https://catbox.moe/user/api.php', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (response.ok) {
+                    const finalLink = await response.text();
+                    showResult(finalLink);
+                } else {
+                    alert("Gagal upload ke server!");
+                    resetApp();
+                }
+            } catch (error) {
+                console.error(error);
+                alert("Kesalahan Jaringan. Coba gunakan VPN atau cek koneksi.");
+                resetApp();
+            }
+        }
+
+        // Tampilkan hasil link
+        function showResult(link) {
+            loadingView.classList.add('hidden');
+            resultView.style.display = 'flex';
+            linkDisplay.innerText = link;
+        }
+
+        // Fungsi Copy
+        function copyLink() {
+            const text = linkDisplay.innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                alert("Link berhasil disalin!");
+            });
+        }
+
+        // Reset aplikasi
+        function resetApp() {
+            resultView.style.display = 'none';
+            loadingView.classList.add('hidden');
+            uploadView.classList.remove('hidden');
+            fileInput.value = '';
+        }
+    </script>
+</body>
+</html>
